@@ -9,6 +9,7 @@ public class Events {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public Events(int event_id, String event_name, String event_location, String event_description, String event_type,
 			LocalDate event_date, int user_id, int photo_id, LocalDate created) {
 		super();
@@ -22,6 +23,7 @@ public class Events {
 		this.photo_id = photo_id;
 		this.created = created;
 	}
+
 	private int event_id;
 	private String event_name;
 	private String event_location;
@@ -34,6 +36,7 @@ public class Events {
 	public int getEvent_id() {
 		return event_id;
 	}
+
 	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
