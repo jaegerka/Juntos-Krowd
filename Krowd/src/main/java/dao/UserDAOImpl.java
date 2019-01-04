@@ -12,12 +12,13 @@ import util.HibernateUtil;
 
 public class UserDAOImpl implements UserDAO {
 
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
+	
 	@Override
 	public List<Users> getAllUsers() {
 		List<Users> userList = new ArrayList<>();
 		
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			
 			userList = s.createQuery("from Users").getResultList();
@@ -30,8 +31,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void addUser(Users user) {
-		try (SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try (Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			s.persist(user);
 			tx.commit();
@@ -41,8 +41,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void updateCave(Users user) {
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try (Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			
 			s.persist(user);
@@ -54,8 +53,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void deleteCave(Users user) {
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			
 			s.delete(user);
@@ -68,8 +66,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Users getUserById(int id) {
 		Users user = null;
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			user = (Users) s.get(Users.class, id);
 			tx.commit();
