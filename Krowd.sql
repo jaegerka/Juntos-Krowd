@@ -73,8 +73,7 @@ ALTER TABLE COMMENTS ADD PRIMARY KEY(COMMENT_ID);
 
 COMMIT;
 
-
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (1, 'Raine', 'Kirton', 'rkirton0', 'rkirton0@tiny.cc', 9, 'jBTuWlLjpHBE', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (15, 'Raine', 'Kirton', 'rkirton0', 'rkirton0@tiny.cc', 9, 'jBTuWlLjpHBE', null);
 insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (1, 'Ethelind', 'Flintoff', 'eflintoff0', 'eflintoff0@thetimes.co.uk', 0, 'vR8HZYA5EH', null);
 insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (2, 'Lauretta', 'Stemson', 'lstemson1', 'lstemson1@irs.gov', 6, 'EqiX4vrjRW', null);
 insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (3, 'Ed', 'Moresby', 'emoresby2', 'emoresby2@cnet.com', 0, 'eGNggjZ', null);
@@ -90,4 +89,14 @@ insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, P
 insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (13, 'Guinevere', 'Pickard', 'gpickardc', 'gpickardc@zimbio.com', 3, '0AGuJTW6A', null);
 insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (14, 'Terrence', 'Vannacci', 'tvannaccid', 'tvannaccid@businesswire.com', 1, 'wMqfswh', null);
 
+COMMIT;
 
+-- EVENTS FILL FOR TESTIN
+insert into EVENTS (EVENT_ID, EVENT_NAME, EVENT_LOCATION, EVENT_DESCRIPTION, EVENT_TYPE, EVENT_DATE, USER_ID, PHOTO_ID, CREATED) values (1, null, '7 Moland Way', null, null, TO_DATE ('2018-02-05 19:45:20','yyyy-mm-dd hh24:mi:ss'), 1, null, TO_DATE ('2018-02-05 19:45:20','yyyy-mm-dd hh24:mi:ss'));
+
+-- COMMENTS FILL FOR TESTING
+insert into COMMENTS (COMMENT_ID, DATA , EVENT_ID, CREATED, USER_ID) values (1, null, 1, TO_DATE ('2018-06-09 13:40:32','yyyy-mm-dd hh24:mi:ss'), 16);
+
+COMMIT;
+
+--hello
