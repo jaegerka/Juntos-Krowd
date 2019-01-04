@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import beans.Users;
+import util.HibernateUtil;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -21,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 			Session s = sf.getCurrentSession();
 			Transaction tx = s.beginTransaction();
 			
-			caves = s.createQuery("from Users").getResultList();
+			users = s.createQuery("from Users").getResultList();
 			
 			tx.commit();
 			s.close();
@@ -33,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 		try (SessionFactory sf = HibernateUtil.getSessionFactory()){
 			Session s = sf.getCurrentSession();
 			Transaction tx = s.beginTransaction();
-			s.persist(cave);
+			s.persist(user);
 			tx.commit();
 			s.close();
 		}
@@ -56,8 +57,8 @@ public class UserDAOImpl implements UserDAO {
 		try (SessionFactory sf = HibernateUtil.getSessionFactory()){
 			Session s = sf.getCurrentSession();
 			Transaction tx = s.beginTransaction();
-	        user = (Users)session.load(Users.class, user_id);
-	        Hibernate.initialize(users);
+	        user = (Users)s.load(Users.class, user_id);
+	        Hibernate.initialize(user);
 	    } catch (Exception e) {
 	       e.printStackTrace();
 	    } finally {
