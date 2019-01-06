@@ -11,6 +11,5 @@
  <p>No server was created</p> 
 </ng-template>
 
-<app-landing></app-landing>
-<app-landing></app-landing>
+<app-landing *ngFor="let server of servers; let i =index"></app-landing>
 

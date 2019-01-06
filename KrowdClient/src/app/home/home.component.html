@@ -1,0 +1,5 @@
+<p>
+  home works!
+  <app-event-list ngFor="let event of events; let i =index" [eventList]="events"></app-event-list>
+  <app-event-creator (eventCreated)="onEventAdded($event)"></app-event-creator>
+</p>
