@@ -1,7 +1,15 @@
-<p>
-  home works!
-  <!-- <app-event-list ngFor="let event of events; let i =index" [eventList]="events"></app-event-list> -->
-  <!-- <app-event-creator (eventCreated)="onEventAdded($event)"></app-event-creator> -->
-</p>
+
+
+  <!-- <app-event-list ngFor="let event of events; let i =index" [eventList]="events"></app-event-list>
+  <app-event-creator (eventCreated)="onEventAdded($event)"></app-event-creator> -->
+
+  <!-- Jumbotron to announce the events, with a Google Maps API to display your current location-->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Popular Events Near You</h1>
+      <p class="lead">Your current location: Tampa</p>
+    </div>
+  </div>
+
 
 <app-event-list></app-event-list>
