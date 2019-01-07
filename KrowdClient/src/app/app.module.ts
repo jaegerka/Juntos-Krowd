@@ -10,6 +10,12 @@ import { HomeComponent } from './home/home.component';
 import { EventListComponent } from './home/event-list/event-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EventCreatorComponent } from './home/event-creator/event-creator.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
+
+
 
 @NgModule({
   declarations: [
@@ -20,12 +26,19 @@ import { EventCreatorComponent } from './home/event-creator/event-creator.compon
     HomeComponent,
     EventListComponent,
     ProfileComponent,
-    EventCreatorComponent
+    EventCreatorComponent,
+    ImageUploadComponent
+    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    Ng2CloudinaryModule,
+    FileUploadModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
