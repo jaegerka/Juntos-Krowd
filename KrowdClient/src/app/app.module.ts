@@ -9,13 +9,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { EventListComponent } from './home/event-list/event-list.component';
 import { ProfileComponent } from './profile/profile.component';
-import { EventCreatorComponent } from './home/event-creator/event-creator.component';
+import { EventCreatorComponent } from './event-creator/event-creator.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
+import { Routes, RouterModule } from '@angular/router';
 
-
+const appRoutes: Routes = [
+  { path:'home', component: HomeComponent},
+  { path:'profile', component: ProfileComponent},
+  {path: 'create', component: EventCreatorComponent }
+]
 
 @NgModule({
   declarations: [
@@ -37,7 +42,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     FormsModule,
     HttpClientModule,
     Ng2CloudinaryModule,
-    FileUploadModule
+    FileUploadModule,
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [],
