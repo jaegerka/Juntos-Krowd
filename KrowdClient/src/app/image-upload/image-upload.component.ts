@@ -9,6 +9,8 @@ import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 })
 export class ImageUploadComponent implements OnInit {
   selectedFile: File = null;
+  imageURL: string;
+  picture: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,23 +27,13 @@ export class ImageUploadComponent implements OnInit {
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
            let res: any = JSON.parse(response);
            console.log(res);
+           this.imageURL=res.url;
+           console.log(this.imageURL);
+           this.picture=this.imageURL;
        }
        this.uploader.onErrorItem = function(fileItem, response, status, headers) {
           console.info('onErrorItem', fileItem, response, status, headers);
         };
     }
-
-  onFileSelected(event){
-      this.selectedFile = <File>event.target.files[0];
-      console.log(this.selectedFile);
-  }
-
-  onUpload(){
-      const fd = new FormData();
-      fd.append('image', this.selectedFile,this.selectedFile.name)
-      this.http.post(`https://api.cloudinary.com/v1_1/dhazivqjc/image/upload`,{'image':this.selectedFile.name}).subscribe(res=>{
-        console.log(res);
-      })
-  }
 
 }
