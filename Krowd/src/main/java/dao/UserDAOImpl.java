@@ -3,7 +3,10 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.hibernate.Hibernate;
+=======
+>>>>>>> bb0e1f02d9c30eed66ae57e1286004a1fe9ab072
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,26 +16,29 @@ import util.HibernateUtil;
 
 public class UserDAOImpl implements UserDAO {
 
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
+	
+	
 	@Override
 	public List<Users> getAllUsers() {
-		List<Users> users = new ArrayList<>();
+		List<Users> userList = new ArrayList<>();
 		
-		try(SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			
-			users = s.createQuery("from Users").getResultList();
+			userList = s.createQuery("from Users").getResultList();
 			
 			tx.commit();
 			s.close();
 		}
-		return users;
+
+		return userList;
+
 	}
 
 	@Override
 	public void addUser(Users user) {
-		try (SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try (Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
 			s.persist(user);
 			tx.commit();
@@ -61,18 +67,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Users getUserById(int id) {
 		Users user = null;
-		try (SessionFactory sf = HibernateUtil.getSessionFactory()){
-			Session s = sf.getCurrentSession();
+		try(Session s = sf.getCurrentSession()){
 			Transaction tx = s.beginTransaction();
-	        user = (Users)s.load(Users.class, user_id);
-	        Hibernate.initialize(user);
-	    } catch (Exception e) {
-	       e.printStackTrace();
-	    } finally {
-	        if (session != null && session.isOpen()) {
-	            session.close();
-	        }
-	    }
+			user = (Users) s.get(Users.class, id);
+			tx.commit();
+			s.close();
+		}
 	    return user;
 	}
 	

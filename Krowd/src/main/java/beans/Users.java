@@ -2,9 +2,17 @@ package beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
+
 public class Users {
 	
 public Users(String firstname, String lastname, String username, String email, int token_score, String password,
@@ -44,14 +52,35 @@ public Users(int userid, String firstname, String lastname, String username, Str
 	this.photo_id = photo_id;
 }
 
+
+@Id
+@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="caveSequence")
+@SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_Users_PK")
+@Column(name="USER_ID")
 private int userid;
+
+@Column(name="FIRSTNAME")
 private String firstname;
+
+@Column(name="LASTNAME")
 private String lastname;
+
+@Column(name="USERNAME")
 private String username;
+
+@Column(name="EMAIL")
 private String email;
+
+@Column(name="TOKEN_SCORE")
 private int token_score;
+
+@Column(name="PASSWORD")
 private String password;
+
+@Column(name="PHOTO_ID")
 private int photo_id;
+
+
 public int getUserid() {
 	return userid;
 }

@@ -1,3 +1,11 @@
-<p>
-  navbar works!
-</p>
+<div class="wrapper">
+    <nav>
+      <div></div>
+      <ul>
+        <li [ngClass]="{active: nameOfClick==='home'}"  (click)="getID($event)" id="home">Home</li>
+        <li [ngClass]="{active: nameOfClick==='about'}"  (click)="getID($event)" id="about">About</li>
+        <li [ngClass]="{active: nameOfClick==='contact'}"  (click)="getID($event)" id="contact">Contact</li>
+        <li [ngClass]="{active: nameOfClick==='news'}"  (click)="getID($event)" id="news">News</li>
+      </ul>
+    </nav>
+  </div>
