@@ -2,6 +2,18 @@ package beans;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "COMMENTS")
 public class Comments {
 	public Comments() {
 		super();
@@ -12,15 +24,30 @@ public class Comments {
 		this.comment_id = comment_id;
 		this.data = data;
 		this.event_id = event_id;
-		Created = created;
+		this.Created = created;
 		this.user_id = user_id;
 	}
 	
+	public Comments(String data, int event_id, LocalDate created, int user_id) {
+		super();
+		this.data = data;
+		this.event_id = event_id;
+		Created = created;
+		this.user_id = user_id;
+	}
+
+	@Id
+	@Column(name = "COMMENT_ID")
 	private int comment_id;
+	@Column(name = "DATA")
 	private String data;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "EVENT_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private int event_id;
+	@Column(name = "CREATED")
 	private LocalDate Created;
 	private int user_id;
+	
 	public int getComment_id() {
 		return comment_id;
 	}

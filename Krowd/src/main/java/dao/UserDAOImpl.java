@@ -3,6 +3,10 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+import org.hibernate.Hibernate;
+=======
+>>>>>>> bb0e1f02d9c30eed66ae57e1286004a1fe9ab072
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -27,7 +31,9 @@ public class UserDAOImpl implements UserDAO {
 			tx.commit();
 			s.close();
 		}
+
 		return userList;
+
 	}
 
 	@Override
@@ -41,27 +47,21 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void updateCave(Users user) {
-		try (Session s = sf.getCurrentSession()){
+	public void updateUsers(Users user) {
+		try (Session sf = HibernateUtil.getSessionFactory()) {
+			Session s = sf.getCurrentSession();
 			Transaction tx = s.beginTransaction();
-			
-			s.persist(user);
-			
+			s.update(user);
 			tx.commit();
 			s.close();
 		}
+		
 	}
 
 	@Override
-	public void deleteCave(Users user) {
-		try(Session s = sf.getCurrentSession()){
-			Transaction tx = s.beginTransaction();
-			
-			s.delete(user);
-			
-			tx.commit();
-			s.close();
-		}
+	public void deleteUsers(Users user) {
+		
+		
 	}
 
 	@Override
@@ -75,5 +75,6 @@ public class UserDAOImpl implements UserDAO {
 		}
 	    return user;
 	}
+	
 
 }

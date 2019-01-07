@@ -1,5 +1,7 @@
 package beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,22 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Users")
+@Table(name = "USERS")
+
 public class Users {
 	
+public Users(String firstname, String lastname, String username, String email, int token_score, String password,
+			int photo_id) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.email = email;
+		this.token_score = token_score;
+		this.password = password;
+		this.photo_id = photo_id;
+	}
+
 public Users() {
 		super();
 		// TODO Auto-generated constructor stub
