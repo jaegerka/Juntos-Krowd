@@ -9,8 +9,11 @@ public interface UserDAO {
 	public List<Users> getAllUsers();
 	
 	public void addUser(Users user);
-	public void updateCave(Users user);
-	public void deleteCave(Users user);
+
+	public void updateUsers(Users user);
+	public void deleteUsers(Users user);
+	
+
 	public Users getUserById(int id); 
 
 }

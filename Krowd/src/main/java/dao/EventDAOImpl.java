@@ -22,6 +22,7 @@ public class EventDAOImpl implements EventDAO {
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			evn = (Events) s.get(Events.class, event_Id);
+			tx.commit();
 		}
 		return evn;
 		

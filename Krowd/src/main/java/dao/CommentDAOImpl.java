@@ -27,7 +27,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public Comments getEventById(int comment_Id) {
+	public Comments getCommentsById(int comment_Id) {
 		Comments comt = null;
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
@@ -39,10 +39,10 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public void deleteComment(Comments comments) {
+	public void deleteComment(int comment_Id) {
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
-			s.delete(comments);
+			s.delete(comment_Id);
 			tx.commit();
 			s.close();
 		}
@@ -71,4 +71,29 @@ public class CommentDAOImpl implements CommentDAO {
 		
 	}
 
+	@Override
+	public List<Comments> getCommentsByUserId(int user_Id) {
+		List<Comments> comments = new ArrayList<>();
+		try (Session s = sf.getCurrentSession()) {
+			Transaction tx = s.beginTransaction();
+			comments = (List<Comments>) s.get(Comments.class, user_Id);
+			tx.commit();
+			s.close();
+		}
+		return comments;
+		
+	}
+
+	@Override
+	public List<Comments> getCommentsByEventId(int event_Id) {
+		List<Comments> comments = new ArrayList<>();
+		try (Session s = sf.getCurrentSession()) {
+			Transaction tx = s.beginTransaction();
+			comments = (List<Comments>) s.get(Comments.class, event_Id);
+			tx.commit();
+			s.close();
+		}
+		return comments;
+
+	}
 }
