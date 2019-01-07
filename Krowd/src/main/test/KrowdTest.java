@@ -190,6 +190,13 @@ public class KrowdTest {
 	 * ADMIN
 	 *********************************************************************/
 	@Test
+	public void getAllAdmins() {
+        List<Admins> aList = new ArrayList<>();
+        aList = adminDao.getAllAdmins();
+        assertEquals(18, aList.get(69).getAdmin_ID());
+	}
+	
+	@Test
 	public void testAdminDeleteComment() {
 		DeleteCommentService delcomser = new DeleteCommentService();
 		adminInfo ainfo = new adminInfo("charizard@revature.com","flamethrower69");
@@ -216,6 +223,12 @@ public class KrowdTest {
 	/*********************************************************************
 	 * EVENTS
 	 *********************************************************************/
+	@Test
+	public void getAllEvents() {
+        List<Events> eList = new ArrayList<>();
+        eList = eventsDao.getAllEvents();
+        assertEquals(18, aList.get(69).getAdmin_ID());
+	}
 
 	@Test
 	public void testHostCreateEvent() {
