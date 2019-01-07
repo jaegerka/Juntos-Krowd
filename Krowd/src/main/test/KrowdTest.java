@@ -7,6 +7,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -19,6 +23,20 @@ import java.util.Map;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import beans.Comments;
+import beans.Events;
+import beans.Users;
+import dao.CommentDAO;
+import dao.CommentDAOImpl;
+import dao.EventDAO;
+import dao.EventDAOImpl;
+import dao.UserDAO;
+import dao.UserDAOImpl;
+import util.HibernateUtil;
 
 public class KrowdTest {
 
@@ -52,6 +70,29 @@ public class KrowdTest {
 
 	// the following prints "null" because get(999) was not stubbed
 	System.out.println(mockedList.get(999));
+	
+	@RunWith(MockitoJUnitRunner.class)
+	public class NebjaTest {
+		@InjectMocks
+	UserDAOImpl userdaoi;
+	@Mock
+	UserDAO userdao;
+	@Mock
+	private SessionFactory hibernateSessionFactory;
+	@Mock
+	User us;
+
+
+
+	@Test
+	public void testTheThing() throws Exception{
+		Session session = Mockito.mock(Session.class);
+		List<User> us = new ArrayList<>();
+		Mockito.lenient().when(hibernateSessionFactory.getCurrentSession()).thenReturn(session);
+		Mockito.lenient().when(userdao.getAllUsers()).thenReturn(us);
+		 	
+	}
+	}
 
 	/*********************************************************************
 	 * COMMENTS
@@ -105,16 +146,16 @@ public class KrowdTest {
 	@Test
 	public void testEarnTokens() {
 		EarnTokenService eartokser = new EarnTokenService();
-		userInfo uinfo = new userInfo("p@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
 	@Test
 	public void testSpendTokens() {
 		SpendTokenService spetokser = new SpendTokenService();
-		userInfo uinfo = new userInfo("p@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -130,59 +171,70 @@ public class KrowdTest {
 	/*********************************************************************
 	 * USERS
 	 *********************************************************************/
-	
 	@Test
 	public void testGetAllUsers() {
 		List<Users> uList = new ArrayList<>();
 		uList = userDao.getallUsers();
 		assertEquals(666, uList.get(4).getId());
 	}
+
+	@Test
+	public void testGetUserById() {
+		User thisUser = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019,
+				"false");
+		assertTrue(thisUser.equals(UserDao.getUserbyID(25)));
+	}
+
 	@Test
 	public void testIncorrectUserEmail() {
-		userInfo uinfo = new userInfo("p@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertFalse(u.equals(auth.isValidUser(uinfo)));
 	}
+
 	@Test
 	public void testIncorrectUserPassword() {
-		userInfo uinfo = new userInfo("pikachu@revature.com","y");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("pikachu@revature.com", "y");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertFalse(u.equals(auth.isUserValid(uinfo)));
 	}
+
 	@Test
 	public void testNullUserInfo() {
-		userInfo uinfo = new userInfo(null,null);
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo(null, null);
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertFalse(u.equals(auth.isUserValid(uinfo)));
 	}
+
 	@Test
 	public void testVerifyRealUser() {
 		AuthenticationService auth = new AuthenticationService();
-		userInfo uinfo = new userInfo("p@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
+
 	@Test
 	public void testUserRegister() {
 		RegistrationService regis = new RegistrationService();
-		userInfo uinfo = new userInfo("pikachu@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
 	@Test
 	public void testUserLogout() {
 		LogoutService logoserv = new LogoutService();
-		userInfo uinfo = new userInfo("pikachu@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
 	@Test
 	public void testUserLogin() {
 		LoginService logiserv = new LoginService();
-		userInfo uinfo = new userInfo("pikachu@revature.com","pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com","pokeballssuck666","Pikachu","Ketchum",6664202019,"false");
+		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
+		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -191,32 +243,42 @@ public class KrowdTest {
 	 *********************************************************************/
 	@Test
 	public void getAllAdmins() {
-        List<Admins> aList = new ArrayList<>();
-        aList = adminDao.getAllAdmins();
-        assertEquals(18, aList.get(69).getAdmin_ID());
+		List<Admins> aList = new ArrayList<>();
+		aList = adminDao.getAllAdmins();
+		assertEquals(18, aList.get(69).getAdmin_ID());
 	}
-	
+
+	@Test
+	public void testGetAdminById() {
+		User thisAdmin = new Admin(6, "charizard@revature.com,", "flamethrower69", "Charizard", "Emberscale",
+				6669991337, "false");
+		assertTrue(thisAdmin.equals(AdminDao.getAdminbyID(6)));
+	}
+
 	@Test
 	public void testAdminDeleteComment() {
 		DeleteCommentService delcomser = new DeleteCommentService();
-		adminInfo ainfo = new adminInfo("charizard@revature.com","flamethrower69");
-		Admin a = new Admin(6, "charizard@revature.com,","flamethrower69","Charizard","Emberscale",6669991337,"false");
+		adminInfo ainfo = new adminInfo("charizard@revature.com", "flamethrower69");
+		Admin a = new Admin(6, "charizard@revature.com,", "flamethrower69", "Charizard", "Emberscale", 6669991337,
+				"false");
 		assertEquals(a.ath.isAdminValid(ainfo));
 	}
 
 	@Test
 	public void testAdminDeleteUser() {
 		DeleteUserService deluserser = new DeleteCommentService();
-		adminInfo ainfo = new adminInfo("charizard@revature.com","flamethrower69");
-		Admin a = new Admin(6, "charizard@revature.com,","flamethrower69","Charizard","Emberscale",6669991337,"false");
+		adminInfo ainfo = new adminInfo("charizard@revature.com", "flamethrower69");
+		Admin a = new Admin(6, "charizard@revature.com,", "flamethrower69", "Charizard", "Emberscale", 6669991337,
+				"false");
 		assertEquals(a.auth.isAdminValid(ainfo));
 	}
 
 	@Test
 	public void testAdminDeleteEvent() {
 		DeleteEventService deleveser = new DeleteCommentService();
-		adminInfo ainfo = new adminInfo("charizard@revature.com","flamethrower69");
-		Admin a = new Admin(6, "charizard@revature.com,","flamethrower69","Charizard","Emberscale",6669991337,"false");
+		adminInfo ainfo = new adminInfo("charizard@revature.com", "flamethrower69");
+		Admin a = new Admin(6, "charizard@revature.com,", "flamethrower69", "Charizard", "Emberscale", 6669991337,
+				"false");
 		assertEquals(a.auth.isAdminValid(ainfo));
 	}
 
@@ -225,64 +287,70 @@ public class KrowdTest {
 	 *********************************************************************/
 	@Test
 	public void getAllEvents() {
-        List<Events> eList = new ArrayList<>();
-        eList = eventsDao.getAllEvents();
-        assertEquals(18, aList.get(69).getAdmin_ID());
+		List<Events> eList = new ArrayList<>();
+		eList = eventsDao.getAllEvents();
+		assertEquals(18, eList.get(69).getEvent_ID());
+	}
+
+	@Test
+	public void testGetEventById() {
+		User thisEvent = new Event();
+		assertEvent(thisEvent.equals(EventDao.getEventbyID(666)));
 	}
 
 	@Test
 	public void testHostCreateEvent() {
 		CreateEventService creeveser = new CreateEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostCustomizeEvent() {
 		CustomizeEventService cuseveser = new CustomizeEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostDeleteEvent() {
 		DeleteEventService deleveser = new DeleteEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostSendEventInvitation() {
 		SendEventInvitationService seneveinvser = new SendEventInvitationService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostUploadImage() {
 		HostUploadImageService hosuplimaser = new HostUploadImageService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostGmapsCreateEvent() {
 		HostGmapsCreateEventService hosgmacreeveser = new HostGmapsCreateEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testEventCharts() {
 		EventChartsService evechaser = new EventChartsService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com","squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420","Squirtle","Aquaring",7776662020,"false");
+		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
