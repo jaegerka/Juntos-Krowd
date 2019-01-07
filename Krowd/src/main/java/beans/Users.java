@@ -39,7 +39,7 @@ public Users(int userid, String firstname, String lastname, String username, Str
 
 
 @Id
-@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="caveSequence")
+@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="userSequence")
 @SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_Users_PK")
 @Column(name="USER_ID")
 private int userid;
