@@ -10,7 +10,7 @@ A Java web app for creating events
 ## Authors
 
 * **Carlor Bejar** - *Client-Side Design* - [CBejar](https://github.com/cbejar93)
-* **Kaleigh Jaeger** - *Client-Side Design* - [Jargerka](https://github.com/jaegerka)
+* **Kaleigh Jaeger** - *Client-Side Design* - [Jaegerka](https://github.com/jaegerka)
 * **Troy Hicks** - *Server-side Development* - [NOLAWolfe](https://github.com/NOLAWolfe)
 * **Joseph Guzman** - *Server-side Development* - [Joerg4](https://github.com/joerg4)
 * **Nate Jahromi** - *Cross-platform TDD* - [Njahromi](https://github.com/njahromi)
