@@ -11,7 +11,6 @@ public interface UserDAO {
 	public void addUser(Users user);
 	public void updateCave(Users user);
 	public void deleteCave(Users user);
-	
 	public Users getUserById(int id); 
 
 }
