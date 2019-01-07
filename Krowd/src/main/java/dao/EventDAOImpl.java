@@ -1,8 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import beans.Events;
+import util.HibernateUtil;
 
 public class EventDAOImpl implements EventDAO {
 
-	private SessionFactory sf = HibernateUtil.getSessionFactory;
+	private SessionFactory sf = HibernateUtil.getSessionFactory();
 	
 	
 	@Override
@@ -24,6 +22,7 @@ public class EventDAOImpl implements EventDAO {
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			evn = (Events) s.get(Events.class, event_Id);
+			tx.commit();
 		}
 		return evn;
 		
