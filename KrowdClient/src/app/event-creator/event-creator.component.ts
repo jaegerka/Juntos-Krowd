@@ -14,6 +14,7 @@ export class EventCreatorComponent implements OnInit {
   }
 
   onEventCreated(){
+    //code for adding the new event to the database
     console.log('hello');
     this.eventCreated.emit({eventName: this.newEventName});
   }
