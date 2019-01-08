@@ -285,6 +285,17 @@ public class KrowdTest {
 	/*********************************************************************
 	 * EVENTS
 	 *********************************************************************/
+	/*
+	 * 	event_id
+		event_name
+		event_location
+		event_description
+		event_type
+		event_date
+		user_id
+		photo_id
+		created
+	 */
 	@Test
 	public void getAllEvents() {
 		List<Events> eList = new ArrayList<>();
@@ -294,63 +305,85 @@ public class KrowdTest {
 
 	@Test
 	public void testGetEventById() {
-		User thisEvent = new Event();
+		Event thisEvent = new Event();
 		assertEvent(thisEvent.equals(EventDao.getEventbyID(666)));
+	}
+	
+	@Test
+	public void testGetHost() {
+		GetHostService gehoser = new GetHostService
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostCreateEvent() {
 		CreateEventService creeveser = new CreateEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostCustomizeEvent() {
 		CustomizeEventService cuseveser = new CustomizeEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostDeleteEvent() {
 		DeleteEventService deleveser = new DeleteEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostSendEventInvitation() {
 		SendEventInvitationService seneveinvser = new SendEventInvitationService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostUploadImage() {
 		HostUploadImageService hosuplimaser = new HostUploadImageService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testHostGmapsCreateEvent() {
 		HostGmapsCreateEventService hosgmacreeveser = new HostGmapsCreateEventService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
 	@Test
 	public void testEventCharts() {
 		EventChartsService evechaser = new EventChartsService();
-		hostInfo hinfo = new hostInfo("squirtle@revature.com", "squirtlesquad2019");
-		Host h = new Host(7, "squirtle@revature.com", "bubblebeam420", "Squirtle", "Aquaring", 7776662020, "false");
+		eventInfo einfo = new eventInfo(666);
+		Event e = new Event(666, "Pokemon Battle", "Viridian City", "Squirtle versus Pikachu", "Battle", 2-5-2018:2100, 7, 9034934300, 1-3-2018:1043);
+		hostInfo hinfo = new hostInfo(7);
+		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
