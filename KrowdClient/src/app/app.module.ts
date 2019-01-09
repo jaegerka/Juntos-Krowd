@@ -16,13 +16,16 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Routes, RouterModule } from '@angular/router';
 import { EditEventComponent } from './home/edit-event/edit-event.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
   { path:'profile', component: ProfileComponent},
   {path: 'create', component: EventCreatorComponent },
   {path: 'landing', component: LandingComponent},
-  {path:'event/:id/:description/:name/:address', component: EditEventComponent}
+  {path:'event/:id/:description/:name/:address', component: EditEventComponent},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'}
 
 ]
 
@@ -37,7 +40,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     EventCreatorComponent,
     ImageUploadComponent,
-    EditEventComponent
+    EditEventComponent,
+    PageNotFoundComponent
     
 
   ],
