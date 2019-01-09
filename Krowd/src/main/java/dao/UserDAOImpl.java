@@ -3,10 +3,6 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import org.hibernate.Hibernate;
-=======
->>>>>>> bb0e1f02d9c30eed66ae57e1286004a1fe9ab072
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -48,8 +44,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void updateUsers(Users user) {
-		try (Session sf = HibernateUtil.getSessionFactory()) {
-			Session s = sf.getCurrentSession();
+		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			s.update(user);
 			tx.commit();
