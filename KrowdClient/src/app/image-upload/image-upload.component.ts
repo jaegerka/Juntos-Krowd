@@ -11,7 +11,7 @@ export class ImageUploadComponent implements OnInit {
   selectedFile: File = null;
   imageURL: string;
   picture: any;
-  constructor(private http: HttpClient) { }
+  constructor(http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -34,6 +34,7 @@ export class ImageUploadComponent implements OnInit {
        this.uploader.onErrorItem = function(fileItem, response, status, headers) {
           console.info('onErrorItem', fileItem, response, status, headers);
         };
+        console.log("picture upload successful")
     }
 
 }

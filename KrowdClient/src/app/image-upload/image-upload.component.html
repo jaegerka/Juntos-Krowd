@@ -1,14 +1,9 @@
-<p>
-  image-upload works!
-</p>
-
-
-<div>lets try this approach</div>
-
 <img src={{picture}}>
-
+<label for="eventImage">Upload an Image (Optional)</label>
+<br>
 <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
-<button [disabled]="loading" (click)="upload()" class="btn btn-success mt-3">Upload</button>
-<svg id="chart" width="300" height="225">
-  <line x1="20" y1="20" x2="20" y2="130"></line>
-</svg>
+<br>
+<br>
+<button [disabled]="loading" (click)="upload()" >Upload</button>
+
+

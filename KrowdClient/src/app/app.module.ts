@@ -15,8 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Routes, RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditEventComponent } from './home/edit-event/edit-event.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     Ng2CloudinaryModule,
     FileUploadModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
 
   ],
   providers: [],
