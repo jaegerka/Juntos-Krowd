@@ -15,11 +15,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Routes, RouterModule } from '@angular/router';
+import { EditEventComponent } from './home/edit-event/edit-event.component';
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
   { path:'profile', component: ProfileComponent},
-  {path: 'create', component: EventCreatorComponent }
+  {path: 'create', component: EventCreatorComponent },
+  {path: 'landing', component: LandingComponent},
+  {path:'event/:id/:description/:name/:address', component: EditEventComponent}
+
 ]
 
 @NgModule({
@@ -32,7 +36,8 @@ const appRoutes: Routes = [
     EventListComponent,
     ProfileComponent,
     EventCreatorComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    EditEventComponent
     
 
   ],
