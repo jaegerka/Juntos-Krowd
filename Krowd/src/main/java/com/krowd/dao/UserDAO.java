@@ -1,11 +1,12 @@
-package dao;
+package com.krowd.dao;
 
 import java.util.List;
 
-import beans.Users;
+import com.krowd.beans.Users;
 
 public interface UserDAO {
 
+	//Success
 	public List<Users> getAllUsers();
 	
 	public void addUser(Users user);

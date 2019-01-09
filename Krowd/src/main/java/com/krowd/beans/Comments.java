@@ -1,4 +1,4 @@
-package beans;
+package com.krowd.beans;
 
 import java.time.LocalDate;
 
@@ -19,19 +19,20 @@ public class Comments {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Comments(int comment_id, String data, int event_id, LocalDate created, int user_id) {
+
+	public Comments(String data, Events event, LocalDate created, int user_id) {
+		super();
+		this.data = data;
+		this.event = event;
+		Created = created;
+		this.user_id = user_id;
+	}
+
+	public Comments(int comment_id, String data, Events event, LocalDate created, int user_id) {
 		super();
 		this.comment_id = comment_id;
 		this.data = data;
-		this.event_id = event_id;
-		this.Created = created;
-		this.user_id = user_id;
-	}
-	
-	public Comments(String data, int event_id, LocalDate created, int user_id) {
-		super();
-		this.data = data;
-		this.event_id = event_id;
+		this.event = event;
 		Created = created;
 		this.user_id = user_id;
 	}
@@ -43,46 +44,55 @@ public class Comments {
 	private String data;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "EVENT_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-	private int event_id;
+	private Events event;
 	@Column(name = "CREATED")
 	private LocalDate Created;
 	private int user_id;
-	
+
 	public int getComment_id() {
 		return comment_id;
 	}
+
 	public void setComment_id(int comment_id) {
 		this.comment_id = comment_id;
 	}
+
 	public String getData() {
 		return data;
 	}
+
 	public void setData(String data) {
 		this.data = data;
 	}
-	public int getEvent_id() {
-		return event_id;
+
+	public Events getEvent() {
+		return event;
 	}
-	public void setEvent_id(int event_id) {
-		this.event_id = event_id;
+
+	public void setEvent(Events event) {
+		this.event = event;
 	}
+
 	public LocalDate getCreated() {
 		return Created;
 	}
+
 	public void setCreated(LocalDate created) {
 		Created = created;
 	}
+
 	public int getUser_id() {
 		return user_id;
 	}
+
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+
 	@Override
 	public String toString() {
-		return "Comments [comment_id=" + comment_id + ", data=" + data + ", event_id=" + event_id + ", Created="
-				+ Created + ", user_id=" + user_id + "]";
+		return "Comments [comment_id=" + comment_id + ", data=" + data + ", event=" + event + ", Created=" + Created
+				+ ", user_id=" + user_id + "]";
 	}
-	
-	
+
 }

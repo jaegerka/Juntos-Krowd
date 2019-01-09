@@ -1,8 +1,8 @@
-package dao;
+package com.krowd.dao;
 
 import java.util.List;
 
-import beans.Comments;
+import com.krowd.beans.Comments;
 
 public interface CommentDAO {
 	
