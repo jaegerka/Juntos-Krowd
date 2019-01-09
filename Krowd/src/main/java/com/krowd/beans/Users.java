@@ -39,6 +39,8 @@ public String toString() {
 			+ "]";
 }
 
+// you wont need to pass a photo_Url everytime right?
+// maybe for updates
 public Users(int userid, String firstname, String lastname, String username, String email, int token_score,
 		String password, String photo_url) {
 	super();
@@ -52,6 +54,26 @@ public Users(int userid, String firstname, String lastname, String username, Str
 	this.photo_url = photo_url;
 }
 
+
+//Constructor for passing User_Friends table Data
+public Users(int userid, int followingUserId) {
+	super();
+	this.userid = userid;
+	this.followingUserId = followingUserId;
+}
+
+public Users(String firstname, String lastname, String username, String email, int token_score, String password,
+		String photo_url, int followingUserId) {
+	super();
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.username = username;
+	this.email = email;
+	this.token_score = token_score;
+	this.password = password;
+	this.photo_url = photo_url;
+	this.followingUserId = followingUserId;
+}
 
 @Id
 @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="userSequence")
@@ -80,6 +102,26 @@ private String password;
 @Column(name="photo_url")
 private String photo_url;
 
+private int followingUserId;
+
+
+
+
+public String getPhoto_url() {
+	return photo_url;
+}
+
+public void setPhoto_url(String photo_url) {
+	this.photo_url = photo_url;
+}
+
+public int getFollowingUserId() {
+	return followingUserId;
+}
+
+public void setFollowingUserId(int followingUserId) {
+	this.followingUserId = followingUserId;
+}
 
 public int getUserid() {
 	return userid;

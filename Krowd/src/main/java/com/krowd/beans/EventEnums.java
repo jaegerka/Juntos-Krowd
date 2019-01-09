@@ -1,4 +1,4 @@
-package beans;
+package com.krowd.beans;
 
 public enum EventEnums {
 	
