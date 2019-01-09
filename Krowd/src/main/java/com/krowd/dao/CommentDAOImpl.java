@@ -1,4 +1,4 @@
-package dao;
+package com.krowd.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import beans.Comments;
-import util.HibernateUtil;
+import com.krowd.beans.Comments;
+import com.krowd.util.HibernateUtil;
 
 public class CommentDAOImpl implements CommentDAO {
 	
