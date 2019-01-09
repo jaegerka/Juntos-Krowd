@@ -1,15 +1,12 @@
-package main;
-
-import java.util.List;
+package com.krowd.main;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
-import beans.Users;
-import dao.UserDAO;
-import dao.UserDAOImpl;
-import util.HibernateUtil;
+import com.krowd.beans.Users;
+import com.krowd.dao.UserDAO;
+import com.krowd.dao.UserDAOImpl;
+import com.krowd.util.HibernateUtil;
 
 public class Driver {
 
@@ -24,15 +21,13 @@ public class Driver {
 	static void testingUsers(SessionFactory sf) {
 		UserDAO ud = new UserDAOImpl();
 		Session s = sf.getCurrentSession();
+		
+		//ONLY NEED IF RUNNING SESSION METHODS< our DAOS have transaction instantiated already >
 //		Transaction tx = s.beginTransaction();
-		
-		List<Users> userList = ud.getAllUsers();
-		for(Users u: userList) {
-			System.out.println(u);
-		}
-		
-		//basic Crud methods
+
 //		tx.commit();
+
+		
 		s.close();
 	}
 
