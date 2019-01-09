@@ -3,9 +3,11 @@ A Java web app for creating events
 
 ## Built With
 
-* [Angular](https://angular.io/) - Client Side
+* [Angular](https://angular.io/) - Client Side Framework
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Angular Material](https://material.angular.io/) - Used to generate Design Components
+* [Spring](https://spring.io/) - Spring Framework
+* [Hibernate](http://hibernate.org/) - ORM Framework
 
 ## Authors
 
