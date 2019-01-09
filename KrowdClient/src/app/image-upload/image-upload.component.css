@@ -1,4 +1,3 @@
-/* svg#chart {
-    background: lightgray;
-  } */
-  #chart line {stroke: black; stroke-width:1}
+  #chart line {
+    stroke: black; stroke-width:1
+  }

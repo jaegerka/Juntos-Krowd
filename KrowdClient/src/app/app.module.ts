@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Routes, RouterModule } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
@@ -33,8 +34,6 @@ const appRoutes: Routes = [
     ProfileComponent,
     EventCreatorComponent,
     ImageUploadComponent
-    
-
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     Ng2CloudinaryModule,
     FileUploadModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
 
   ],
   providers: [],
