@@ -63,7 +63,7 @@ CREATE TABLE EVENTS (
        EVENT_TYPE VARCHAR(30),
        EVENT_DATE DATE,
        USER_ID INT,
-       PHOTO_ID INT,
+       PHOTO_URL VARCHAR(200),
        CREATED DATE
 )
 
@@ -73,21 +73,21 @@ ALTER TABLE COMMENTS ADD PRIMARY KEY(COMMENT_ID);
 
 COMMIT;
 
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (15, 'Raine', 'Kirton', 'rkirton0', 'rkirton0@tiny.cc', 9, 'jBTuWlLjpHBE', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (1, 'Ethelind', 'Flintoff', 'eflintoff0', 'eflintoff0@thetimes.co.uk', 0, 'vR8HZYA5EH', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (2, 'Lauretta', 'Stemson', 'lstemson1', 'lstemson1@irs.gov', 6, 'EqiX4vrjRW', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (3, 'Ed', 'Moresby', 'emoresby2', 'emoresby2@cnet.com', 0, 'eGNggjZ', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (4, 'Lorne', 'Barszczewski', 'lbarszczewski3', 'lbarszczewski3@adobe.com', 7, 'WT7Z9yGiSD', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (5, 'Marylynne', 'Wilbor', 'mwilbor4', 'mwilbor4@csmonitor.com', 6, '8UPZ1l23Tbg', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (6, 'Cyril', 'Guslon', 'cguslon5', 'cguslon5@parallels.com', 2, 'EjkG99', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (7, 'Starr', 'Leads', 'sleads6', 'sleads6@howstuffworks.com', 4, 'JCbgOm6Sq9f', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (8, 'Joanne', 'Malster', 'jmalster7', 'jmalster7@techcrunch.com', 8, '3tf88I', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (9, 'Jolee', 'Nicolls', 'jnicolls8', 'jnicolls8@ifeng.com', 7, 'WQxVk2FGeAmQ', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (10, 'Gothart', 'Caze', 'gcaze9', 'gcaze9@wunderground.com', 7, 'LYaecdo', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (11, 'Nonah', 'Budcock', 'nbudcocka', 'nbudcocka@arizona.edu', 2, 'DRYXL9', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (12, 'Catharine', 'Whybrow', 'cwhybrowb', 'cwhybrowb@google.com', 7, 'zs1JGZQ6', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (13, 'Guinevere', 'Pickard', 'gpickardc', 'gpickardc@zimbio.com', 3, '0AGuJTW6A', null);
-insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_ID) values (14, 'Terrence', 'Vannacci', 'tvannaccid', 'tvannaccid@businesswire.com', 1, 'wMqfswh', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (15, 'Raine', 'Kirton', 'rkirton0', 'rkirton0@tiny.cc', 9, 'jBTuWlLjpHBE', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (1, 'Ethelind', 'Flintoff', 'eflintoff0', 'eflintoff0@thetimes.co.uk', 0, 'vR8HZYA5EH', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (2, 'Lauretta', 'Stemson', 'lstemson1', 'lstemson1@irs.gov', 6, 'EqiX4vrjRW', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (3, 'Ed', 'Moresby', 'emoresby2', 'emoresby2@cnet.com', 0, 'eGNggjZ', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (4, 'Lorne', 'Barszczewski', 'lbarszczewski3', 'lbarszczewski3@adobe.com', 7, 'WT7Z9yGiSD', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (5, 'Marylynne', 'Wilbor', 'mwilbor4', 'mwilbor4@csmonitor.com', 6, '8UPZ1l23Tbg', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (6, 'Cyril', 'Guslon', 'cguslon5', 'cguslon5@parallels.com', 2, 'EjkG99', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (7, 'Starr', 'Leads', 'sleads6', 'sleads6@howstuffworks.com', 4, 'JCbgOm6Sq9f', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (8, 'Joanne', 'Malster', 'jmalster7', 'jmalster7@techcrunch.com', 8, '3tf88I', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (9, 'Jolee', 'Nicolls', 'jnicolls8', 'jnicolls8@ifeng.com', 7, 'WQxVk2FGeAmQ', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (10, 'Gothart', 'Caze', 'gcaze9', 'gcaze9@wunderground.com', 7, 'LYaecdo', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (11, 'Nonah', 'Budcock', 'nbudcocka', 'nbudcocka@arizona.edu', 2, 'DRYXL9', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (12, 'Catharine', 'Whybrow', 'cwhybrowb', 'cwhybrowb@google.com', 7, 'zs1JGZQ6', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (13, 'Guinevere', 'Pickard', 'gpickardc', 'gpickardc@zimbio.com', 3, '0AGuJTW6A', null);
+insert into USERS (USER_ID, FIRSTNAME, LASTNAME, USERNAME, EMAIL, TOKEN_SCORE, PASSWORD, PHOTO_URL) values (14, 'Terrence', 'Vannacci', 'tvannaccid', 'tvannaccid@businesswire.com', 1, 'wMqfswh', null);
 
 COMMIT;
 
@@ -100,3 +100,48 @@ insert into COMMENTS (COMMENT_ID, DATA , EVENT_ID, CREATED, USER_ID) values (1, 
 COMMIT;
 
 --hello
+
+--PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION PAY ATTENTION
+-- @TROY
+-- ONLY ADD IF YOU HAVE PHOTO_ID, INSTEAD OF PHOTO_URL
+
+--ALTER TABLE USERS
+--MODIFY PHOTO_URL VARCHAR2(200);
+
+--
+-- CREATION OF THE JUNCTION TABLE USER_EVENTS
+--
+-- TABLE ROLE:::
+-- USERS WHO FOLLOW EVENTS WILL BE UPDATED TO THIS TABLE 
+-- 
+-- DATA RETRIEVAL:
+-- SEARCH FOR USER FOLLOWING LIST BY SEARCHING WHERE THE EVENT ID IS = TO ?
+-- ALL RETURNED DATA DISPLAYS ALL USERS WHO FOLLOW THAT EVENT
+
+
+CREATE TABLE USER_EVENTS(
+    USER_ID NOT NULL,
+    EVENT_ID NOT NULL,
+    CONSTRAINT PK_USER_EVENTS PRIMARY KEY
+    (
+    USER_ID,
+    EVENT_ID
+    ),
+    FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID),
+    FOREIGN KEY (EVENT_ID) REFERENCES EVENTS (EVENT_ID)
+)
+
+-- TEST SCRIPT FOR PULLING USER/EVENT DATA 
+SELECT FIRSTNAME, LASTNAME
+FROM USER_EVENTS
+JOIN USERS ON USERS.USER_ID = USER_EVENTS.USER_ID
+JOIN EVENTS ON EVENTS.EVENT_ID = USER_EVENTS.EVENT_ID;
+
+INSERT INTO USER_EVENTS (USER_ID, EVENT_ID) VALUES (16,1);
+
+COMMIT;
+
+ALTER TABLE USERS
+DROP COLUMN PHOTO_ID;
+
+COMMIT;

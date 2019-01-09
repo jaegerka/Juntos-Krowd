@@ -1,7 +1,17 @@
-package beans;
+package com.krowd.beans;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "EVENTS")
 public class Events {
 
 	
@@ -24,15 +34,26 @@ public class Events {
 		this.created = created;
 	}
 
+	@Id
+	@Column(name = "EVENT_ID")
 	private int event_id;
+	@Column(name = "EVENT_NAME")
 	private String event_name;
+	@Column(name = "EVENT_LOCATION")
 	private String event_location;
+	@Column(name = "EVENT_DESCRIPTION")
 	private String event_description;
+	@Column(name = "EVENT_TYPE")
 	private String event_type;
+	@Column(name = "EVENT_DATE")
 	private LocalDate event_date;
+	@JoinColumn(name = "USER_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private int user_id;
+	@JoinColumn(name = "PHOTO_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private int photo_id;
+	@JoinColumn(name = "EVENT_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private LocalDate created;
+	
 	public int getEvent_id() {
 		return event_id;
 	}

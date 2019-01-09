@@ -1,4 +1,4 @@
-package dao;
+package com.krowd.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import beans.Events;
-import util.HibernateUtil;
+import com.krowd.beans.Events;
+import com.krowd.util.HibernateUtil;
 
 public class EventDAOImpl implements EventDAO {
 
@@ -22,6 +22,7 @@ public class EventDAOImpl implements EventDAO {
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
 			evn = (Events) s.get(Events.class, event_Id);
+			tx.commit();
 		}
 		return evn;
 		

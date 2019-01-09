@@ -1,8 +1,8 @@
-package dao;
+package com.krowd.dao;
 
 import java.util.List;
 
-import beans.Events;
+import com.krowd.beans.Events;
 
 public interface EventDAO {
 	

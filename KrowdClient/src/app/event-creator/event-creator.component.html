@@ -1,0 +1,52 @@
+<h1>Create an Event</h1>
+<h6>Please fill out the information below to create an event.</h6>
+<!-- Card for creating event -->
+<div class="card">
+  <form>
+      <!-- input for the Name of the Event-->
+      <div class="form-group">
+        <label for="eventName">Name of Event</label>
+        <input type="text" class="form-control" id="eventName" placeholder="example: Morning Hike">
+      </div>
+
+    <!-- div for putting Category & # of people on the same line-->
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="eventCategory">Category</label>
+        <select class="form-control" id="eventCategory">
+          <option selected>Select from List</option>
+          <option>Art</option>
+          <option>Food & Drink</option>
+          <option>Music</option>
+          <option>Outdoors</option>
+          <option>Sports</option>
+          <option>Volunteering</option>
+        </select>
+      </div>
+      <!-- div to provide spacing between Category & # of people-->
+      <div class="form-group col">
+      </div>
+
+      <div class="form-group col">
+        <label for="eventPeople">Max Number of People</label>
+        <input type="number" class="form-control" id="eventPeople" placeholder="0-100" maxlength="3" min="1" max="100">
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="eventDescription">Description</label>
+        <textarea class="form-control" id="eventDescription" rows="4" maxlength="200" placeholder="Please provide a short description of the event (under 200 characters)."></textarea>
+      </div>
+      
+      <!-- <div class="form-group">
+          <label for="eventImage">Upload an Image</label>
+           <app-image-upload></app-image-upload>
+      </div> -->
+      
+      <div class="form-group">
+        <!-- <input type="text" [(ngModel)]= "newEventName"> -->
+        <button (click)="onEventCreated()">Create Event</button>
+      </div>
+    </form>
+  </div>
+
+  

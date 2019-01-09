@@ -1,5 +1,7 @@
-package beans;
+package com.krowd.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,22 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Users")
+@Table(name = "USERS")
+
 public class Users {
 	
+public Users(String firstname, String lastname, String username, String email, int token_score, String password,
+			String photo_url) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.email = email;
+		this.token_score = token_score;
+		this.password = password;
+		this.photo_url = photo_url;
+	}
+
 public Users() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -20,12 +35,12 @@ public Users() {
 @Override
 public String toString() {
 	return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
-			+ ", email=" + email + ", token_score=" + token_score + ", password=" + password + ", photo_id=" + photo_id
+			+ ", email=" + email + ", token_score=" + token_score + ", password=" + password + ", photo_url=" + photo_url
 			+ "]";
 }
 
 public Users(int userid, String firstname, String lastname, String username, String email, int token_score,
-		String password, int photo_id) {
+		String password, String photo_url) {
 	super();
 	this.userid = userid;
 	this.firstname = firstname;
@@ -34,12 +49,12 @@ public Users(int userid, String firstname, String lastname, String username, Str
 	this.email = email;
 	this.token_score = token_score;
 	this.password = password;
-	this.photo_id = photo_id;
+	this.photo_url = photo_url;
 }
 
 
 @Id
-@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="caveSequence")
+@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="userSequence")
 @SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_Users_PK")
 @Column(name="USER_ID")
 private int userid;
@@ -62,8 +77,8 @@ private int token_score;
 @Column(name="PASSWORD")
 private String password;
 
-@Column(name="PHOTO_ID")
-private int photo_id;
+@Column(name="photo_url")
+private String photo_url;
 
 
 public int getUserid() {
@@ -108,11 +123,11 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public int getPhoto_id() {
-	return photo_id;
+public String getphoto_url() {
+	return photo_url;
 }
-public void setPhoto_id(int photo_id) {
-	this.photo_id = photo_id;
+public void setphoto_url(String photo_url) {
+	this.photo_url = photo_url;
 }
 
 

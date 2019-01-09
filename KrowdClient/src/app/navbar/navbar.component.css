@@ -30,7 +30,7 @@
     /* color: #fff; */
     color: black;
     padding: 10px 0 10px 0;
-    margin: -1px -5px -1px -1px;
+    margin: -1px -1px -1px -1px;
     cursor: pointer;
     transition: all .2s;
   }
@@ -56,7 +56,7 @@
   nav div {
     position: absolute;
     left: 0;
-    top: 16px;
+    /* top: 16px; */
     background: #fff;
     /* background: green; */
     width: 162px;
@@ -70,5 +70,11 @@
     background-color: #FF4F00;
     /* color: blue; */
     border: 1px solid black;
+    
 
   } 
+
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
