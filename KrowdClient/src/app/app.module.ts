@@ -16,11 +16,19 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Routes, RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EditEventComponent } from './home/edit-event/edit-event.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
   { path:'profile', component: ProfileComponent},
-  {path: 'create', component: EventCreatorComponent }
+  {path: 'create', component: EventCreatorComponent },
+  {path: 'landing', component: LandingComponent},
+  {path:'event/:id/:description/:name/:address', component: EditEventComponent},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'}
+
 ]
 
 @NgModule({
@@ -33,7 +41,11 @@ const appRoutes: Routes = [
     EventListComponent,
     ProfileComponent,
     EventCreatorComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    EditEventComponent,
+    PageNotFoundComponent
+    
+
   ],
   imports: [
     BrowserModule,

@@ -11,25 +11,55 @@
                             <img class="lib-img-show" src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_200x200_v1.png">
 
                           <!-- The user's name and profile information -->
-                            <div class="col-sm">
+                            <div class="col-7">
                               <br>
                                 <div class="lib-row lib-header">
                                     John Doe 
                                     <div class="lib-header-seperator"></div>
-                                </div>   
-                                <div class="lib-row lib-desc">
-                                   Interests:
+                                </div>  
+                                <div> 
+                                  <div class="row" >
+                                    <div class="lib-row lib-desc col-4">
+                                        <div style="width: 10rem;">
+                                            <div class="card-body">
+                                              <h5 class="card-title">Followers</h5>
+                                              <p class="card-text">{{Followers}}</p>
+                                               <!-- delete after interpolation implemented-->
+                                              <p class="card-text">287</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="lib-row lib-desc col-4">
+                                        <div style="width: 10rem;">
+                                            <div class="card-body">
+                                              <h5 class="card-title">Following</h5>
+                                              <p class="card-text">{{Following}}</p>
+                                               <!-- delete after interpolation implemented-->
+                                              <p class="card-text">103</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="lib-row lib-desc col-4">
+                                        <div style="width: 10rem;">
+                                            <div class="card-body">
+                                              <h5 class="card-title">Tokens</h5>
+                                              <p class="card-text">{{Tokens}}</p>
+                                              <!-- delete after interpolation implemented-->
+                                              <p class="card-text">35</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                  </div>
                                 </div>
                               <br>
                             </div> 
                             
                             <!-- buttons linking to the user's events, comments, and information -->
-                            <div id="profileButtons" class="col-sm">
+                            <div id="profileButtons" class="col-2">
                                 <br>
-                                <br>
-                                <a href="#" class="btn btn-primary event-button">Your Events</a>
-                                <a href="#" class="btn btn-primary event-button">Your Comments</a>
-                                <a href="#" class="btn btn-primary event-button">Edit Information</a>
+                                <a href="#" class="btn btn-success event-button">Your Events</a>
+                                <a href="#" class="btn btn-success event-button">Your Comments</a>
+                                <a href="#" class="btn btn-success event-button">Edit Information</a>
                                 <br>
                             </div>                   
                         </div>

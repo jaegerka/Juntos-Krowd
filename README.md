@@ -3,14 +3,16 @@ A Java web app for creating events
 
 ## Built With
 
-* [Angular](https://angular.io/) - Client Side
+* [Angular](https://angular.io/) - Client Side Framework
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [Angular Material](https://material.angular.io/) - Used to generate Design Components
+* [Spring](https://spring.io/) - Spring Framework
+* [Hibernate](http://hibernate.org/) - ORM Framework
 
 ## Authors
 
-* **Carlor Bejar** - *Client-Side Design* - [CBejar](https://github.com/cbejar93)
-* **Kaleigh Jaeger** - *Client-Side Design* - [Jaegerka](https://github.com/jaegerka)
+* **Carlor Bejar** - *Angular Development* - [CBejar](https://github.com/cbejar93)
+* **Kaleigh Jaeger** - *Angular Development* - [Jaegerka](https://github.com/jaegerka)
 * **Troy Hicks** - *Server-side Development* - [NOLAWolfe](https://github.com/NOLAWolfe)
 * **Joseph Guzman** - *Server-side Development* - [Joerg4](https://github.com/joerg4)
 * **Nate Jahromi** - *Cross-platform TDD* - [Njahromi](https://github.com/njahromi)
