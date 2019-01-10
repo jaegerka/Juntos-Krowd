@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataServiceService} from '../data-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   
   events: [];
-  constructor() { }
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
+  }
+
+  onGetUser(){
+    this.dataService.getAllUsers()
+      .subscribe(
+        (response)=> console.log(response),
+        (error)=> console.log(error)
+        );
+        
   }
 
   onEventAdded(eventData:{eventName:string}){
