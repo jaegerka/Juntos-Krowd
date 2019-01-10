@@ -11,9 +11,9 @@
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<mapping class="beans.Users"></mapping>
-		<mapping class="beans.Comments"></mapping>
-		<mapping class="beans.Events"></mapping>
+		<mapping class="com.krowd.beans.Users"></mapping>
+		<mapping class="com.krowd.beans.Comments"></mapping>
+		<mapping class="com.krowd.beans.Events"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
