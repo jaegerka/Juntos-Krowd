@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   {path: 'landing', component: LandingComponent},
   {path:'event/:id/:description/:name/:address', component: EditEventComponent},
   {path: 'not-found', component: PageNotFoundComponent},
-  // {path: '**', redirectTo: '/not-found'}
+  {path: '**', redirectTo: '/not-found'}
 
 ]
 
