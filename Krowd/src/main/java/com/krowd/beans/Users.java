@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-
 public class Users {
 	
 public Users(String firstname, String lastname, String username, String email, int token_score, String password,

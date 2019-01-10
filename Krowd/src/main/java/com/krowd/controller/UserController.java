@@ -14,8 +14,8 @@ import com.krowd.beans.Users;
 import com.krowd.service.UserService;
 
 @Controller
-@RequestMapping(value="user")
-public class BeanController {
+@RequestMapping(value="/users")
+public class UserController {
 
 	@Autowired
 	private UserService userService;
