@@ -8,7 +8,7 @@ import com.krowd.beans.Users;
 import com.krowd.dao.UserDAO;
 import com.krowd.dao.UserDAOImpl;
 
-@Service(value="UserService")
+@Service(value="userService")
 public class UserServiceImpl implements UserService {
 
 	private UserDAO ud = new UserDAOImpl();
@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService {
 		return ud.getUserById(id);
 	}
 
-	@Override
-	public void updateFollow(Users user, Users user2) {
-		// TODO
-	}
+//	@Override
+//	public void updateFollow(Users user, Users user2) {
+//		// TODO
+//	}
 
 }
