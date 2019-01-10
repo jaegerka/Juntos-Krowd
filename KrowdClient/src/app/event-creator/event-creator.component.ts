@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Event } from '../home/event.model';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
@@ -11,6 +10,7 @@ import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
   styleUrls: ['./event-creator.component.css']
 })
 export class EventCreatorComponent implements OnInit {
+  submitted = false;
   @Output() eventCreated = new EventEmitter<{eventName:string}>();
   newEventName:string;
 
@@ -22,13 +22,14 @@ export class EventCreatorComponent implements OnInit {
     console.log('Event Successfully Created');
     const value = form.value;
     console.log(form.value)
-    const newEvent = new Event(value.eventName, 
+    const newEvent = new Event(null, value.eventName, 
       value.eventLocation, value.eventDescription, 
       value.eventCategory, value.eventDate, 
-      value.eventUserID, this.imageURL, 
-      value.eventCreated);
+      null, this.imageURL, 
+      null, value.eventPeople);
     this.eventCreated.emit({eventName: this.newEventName});
     console.log(newEvent);
+    this.submitted = true;
   }
 
 //code for image upload
