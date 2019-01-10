@@ -14,28 +14,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.krowd.beans.Users;
-import com.krowd.service.UserService;
+import com.krowd.beans.Comments;
+import com.krowd.service.CommentService;
 
 @Controller
-@RequestMapping(value="/user")
-public class UserController {
-
+@RequestMapping(value="/comment")
+public class CommentController {
 	@Autowired
-	private UserService userService;
+	private CommentService commentService;
 	
-//	Users u1 = new Users(200,"The","Greatest","ImTheMan","WhoAmI23@gmail.com",100,"ImBetterThanTheBest","BetterThanYou.url");
+//	comments u1 = new comments(200,"The","Greatest","ImTheMan","WhoAmI23@gmail.com",100,"ImBetterThanTheBest","BetterThanYou.url");
 	
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Users>> getAllUsers(){
-		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+	public ResponseEntity<List<Comments>> getAllcomments(){
+		return new ResponseEntity<>(commentService.getAllComments(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/{id}")
 	@ResponseBody
-	public ResponseEntity<Users> getUserById(@PathVariable int id){
-		Users u = userService.getUserById(id);
+	public ResponseEntity<Comments> getcommentById(@PathVariable int id){
+		Comments u = commentService.getCommentById(id);
 		if (u == null) {
 			return new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT);
 		} else {
@@ -46,18 +45,15 @@ public class UserController {
 	
 	@PostMapping(value="/add")
 	@ResponseBody
-	public ResponseEntity<String> addUser(@RequestBody Users user){
+	public ResponseEntity<String> addcomment(@RequestBody Comments comment){
 		ResponseEntity<String> resp = null;
 		try {
-			userService.addUser(user);
-			resp = new ResponseEntity<>("User Created!", HttpStatus.OK);
+			commentService.addComment(comment);
+			resp = new ResponseEntity<>("comment Created!", HttpStatus.OK);
 			
 		} catch (Exception e) {
-			resp = new ResponseEntity<>("No User Created, Try Again", HttpStatus.BAD_REQUEST);
+			resp = new ResponseEntity<>("No comment Created, Try Again", HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
-	
-	
-	
 }

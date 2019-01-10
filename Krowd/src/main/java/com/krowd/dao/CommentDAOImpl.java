@@ -27,7 +27,7 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public Comments getCommentsById(int comment_Id) {
+	public Comments getCommentById(int comment_Id) {
 		Comments comt = null;
 		try (Session s = sf.getCurrentSession()) {
 			Transaction tx = s.beginTransaction();
