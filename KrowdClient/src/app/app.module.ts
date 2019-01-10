@@ -18,11 +18,21 @@ import { Routes, RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditEventComponent } from './home/edit-event/edit-event.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserCommentsComponent } from './profile/user-comments/user-comments.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { UserEventsComponent } from './profile/user-events/user-events.component';
 
 
 const appRoutes: Routes = [
   { path:'home', component: HomeComponent},
-  { path:'profile', component: ProfileComponent},
+  { path:'profile', component: ProfileComponent, 
+  
+    children:[
+    {path: 'comments', component: UserCommentsComponent},
+    {path: 'events', component: UserEventsComponent},
+    {path: 'edit', component: EditProfileComponent}
+  ]
+  },
   {path: 'create', component: EventCreatorComponent },
   {path: 'landing', component: LandingComponent},
   {path:'event/:id/:description/:name/:address', component: EditEventComponent},
@@ -43,7 +53,10 @@ const appRoutes: Routes = [
     EventCreatorComponent,
     ImageUploadComponent,
     EditEventComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserCommentsComponent,
+    EditProfileComponent,
+    UserEventsComponent
     
 
   ],

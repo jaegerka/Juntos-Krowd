@@ -57,15 +57,16 @@
                             <!-- buttons linking to the user's events, comments, and information -->
                             <div id="profileButtons" class="col-2">
                                 <br>
-                                <a href="#" class="btn btn-success event-button">Your Events</a>
-                                <a href="#" class="btn btn-success event-button">Your Comments</a>
-                                <a href="#" class="btn btn-success event-button">Edit Information</a>
+                                <a routerLink='events' class="btn btn-success event-button">Your Events</a>
+                                <a routerLink='comments' class="btn btn-success event-button">Your Comments</a>
+                                <a routerLink='edit' class="btn btn-success event-button">Edit Information</a>
                                 <br>
                             </div>                   
                         </div>
                     </div>
                 </div>
             </div>
+            <router-outlet></router-outlet>
     </div>
 
     <br>
