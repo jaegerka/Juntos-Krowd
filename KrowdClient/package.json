@@ -28,7 +28,9 @@
     "jquery": "^2.2.4",
     "materialize-css": "^1.0.0",
     "ng2-cloudinary": "^0.9.2",
+    "npm": "^6.5.0",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.3.3",
     "tslib": "^1.9.0",
     "typed.js": "^2.0.9",
     "zone.js": "~0.8.26"
