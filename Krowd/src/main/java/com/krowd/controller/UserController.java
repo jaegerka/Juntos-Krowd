@@ -14,7 +14,7 @@ import com.krowd.beans.Users;
 import com.krowd.service.UserService;
 
 @Controller
-@RequestMapping(value="/users")
+@RequestMapping(value="/user")
 public class UserController {
 
 	@Autowired

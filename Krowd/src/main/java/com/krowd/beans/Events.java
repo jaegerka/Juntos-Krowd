@@ -21,7 +21,7 @@ public class Events {
 	}
 
 	public Events(int event_id, String event_name, String event_location, String event_description, String event_type,
-			LocalDate event_date, int user_id, int photo_url, LocalDate created) {
+			LocalDate event_date, int user_id, String photo_url, LocalDate created) {
 		super();
 		this.event_id = event_id;
 		this.event_name = event_name;
@@ -50,7 +50,7 @@ public class Events {
 	@JoinColumn(name = "USER_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private int user_id;
 	@JoinColumn(name = "photo_url", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-	private int photo_url;
+	private String photo_url;
 	@JoinColumn(name = "EVENT_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private LocalDate created;
 	
@@ -97,10 +97,11 @@ public class Events {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getphoto_url() {
+	public String
+	getphoto_url() {
 		return photo_url;
 	}
-	public void setphoto_url(int photo_url) {
+	public void setphoto_url(String photo_url) {
 		this.photo_url = photo_url;
 	}
 	public LocalDate getCreated() {
