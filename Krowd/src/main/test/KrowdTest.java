@@ -109,6 +109,10 @@ public class KrowdTest {
 		assertEquals(test.getUniqueId(), 43);
 	}
 
+	/*
+	 * This tests whether the user can delete a comment they've posted.
+	 */
+
 	@Test
 	public void testDeleteComment() {
 		Iterator<String> i = mock(Iterator.class);
@@ -117,6 +121,11 @@ public class KrowdTest {
 		// assert
 		assertEquals("Mockito rocks", result);
 	}
+
+	/*
+	 * This test ensures that a user can downvote a comment that another user has
+	 * posted.
+	 */
 
 	@Test
 	public void testDownvoteComment() {
@@ -127,6 +136,11 @@ public class KrowdTest {
 		assertEquals(1, c.compareTo("Mockito"));
 	}
 
+	/*
+	 * This test ensures that a user can upvote a comment that another user has
+	 * posted.
+	 */
+
 	@Test
 	public void testUpvoteComment() {
 		Comparable<Integer> c = mock(Comparable.class);
@@ -134,6 +148,11 @@ public class KrowdTest {
 		// assert
 		assertEquals(-1, c.compareTo(9));
 	}
+
+	/*
+	 * This test ensures that events are posted to google maps and are searchable to
+	 * registered users.
+	 */
 
 	@Test
 	public void testGoogleMapSearchEvent() {
@@ -143,6 +162,10 @@ public class KrowdTest {
 		assertEquals(0, c.compareTo(new Todo(1)));
 	}
 
+	/*
+	 * This test ensures that users can generate and earn tokens.
+	 */
+
 	@Test
 	public void testEarnTokens() {
 		EarnTokenService eartokser = new EarnTokenService();
@@ -151,6 +174,10 @@ public class KrowdTest {
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
+	/*
+	 * This test ensures that earned tokens can be spent.
+	 */
+
 	@Test
 	public void testSpendTokens() {
 		SpendTokenService spetokser = new SpendTokenService();
@@ -158,6 +185,10 @@ public class KrowdTest {
 		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
+
+	/*
+	 * This test ensures that users can send private messages to one another.
+	 */
 
 	@Test
 	public void testSendMessage() {
@@ -171,6 +202,15 @@ public class KrowdTest {
 	/*********************************************************************
 	 * USERS
 	 *********************************************************************/
+
+	/*
+	 * userid; firstname; lastname; username; email; token_score; password;
+	 * photo_id;
+	 */
+
+	/*
+	 * This test returns a list of all of the users.
+	 */
 	@Test
 	public void testGetAllUsers() {
 		List<Users> uList = new ArrayList<>();
@@ -180,29 +220,32 @@ public class KrowdTest {
 
 	@Test
 	public void testGetUserById() {
-		User thisUser = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019,
-				"false");
+		User thisUser = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertTrue(thisUser.equals(UserDao.getUserbyID(25)));
 	}
 
 	@Test
 	public void testIncorrectUserEmail() {
 		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertFalse(u.equals(auth.isValidUser(uinfo)));
 	}
 
 	@Test
 	public void testIncorrectUserPassword() {
 		userInfo uinfo = new userInfo("pikachu@revature.com", "y");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertFalse(u.equals(auth.isUserValid(uinfo)));
 	}
 
 	@Test
 	public void testNullUserInfo() {
 		userInfo uinfo = new userInfo(null, null);
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertFalse(u.equals(auth.isUserValid(uinfo)));
 	}
 
@@ -210,7 +253,8 @@ public class KrowdTest {
 	public void testVerifyRealUser() {
 		AuthenticationService auth = new AuthenticationService();
 		userInfo uinfo = new userInfo("p@revature.com", "pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -218,7 +262,8 @@ public class KrowdTest {
 	public void testUserRegister() {
 		RegistrationService regis = new RegistrationService();
 		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -226,7 +271,8 @@ public class KrowdTest {
 	public void testUserLogout() {
 		LogoutService logoserv = new LogoutService();
 		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -234,7 +280,8 @@ public class KrowdTest {
 	public void testUserLogin() {
 		LoginService logiserv = new LoginService();
 		userInfo uinfo = new userInfo("pikachu@revature.com", "pokeballssuck666");
-		User u = new User(25, "pikachu@revature.com", "pokeballssuck666", "Pikachu", "Ketchum", 6664202019, "false");
+		User u = new User(25, "Pikachu", "Ketchum", "pikapower", "pikachu@revature.com", 500, "pokeballssuck666",
+				6664202019);
 		assertEquals(u.auth.isUserValid(uinfo));
 	}
 
@@ -286,15 +333,8 @@ public class KrowdTest {
 	 * EVENTS
 	 *********************************************************************/
 	/*
-	 * 	event_id
-		event_name
-		event_location
-		event_description
-		event_type
-		event_date
-		user_id
-		photo_id
-		created
+	 * event_id event_name event_location event_description event_type event_date
+	 * user_id photo_id created
 	 */
 	@Test
 	public void getAllEvents() {
@@ -308,7 +348,7 @@ public class KrowdTest {
 		Event thisEvent = new Event();
 		assertEvent(thisEvent.equals(EventDao.getEventbyID(666)));
 	}
-	
+
 	@Test
 	public void testGetHost() {
 		GetHostService gehoser = new GetHostService
@@ -357,6 +397,10 @@ public class KrowdTest {
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
+	/*
+	 * This test makes sure an event host can upload an image for the event.
+	 */
+
 	@Test
 	public void testHostUploadImage() {
 		HostUploadImageService hosuplimaser = new HostUploadImageService();
@@ -367,6 +411,11 @@ public class KrowdTest {
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
 
+	/*
+	 * This tests the event host's ability to successfully create an event via
+	 * Google Maps.
+	 */
+
 	@Test
 	public void testHostGmapsCreateEvent() {
 		HostGmapsCreateEventService hosgmacreeveser = new HostGmapsCreateEventService();
@@ -376,6 +425,12 @@ public class KrowdTest {
 		Host h = new Host(7);
 		assertEquals(h.auth.isHostValid(hinfo));
 	}
+
+	/*
+	 * The event charts are a personalized feed that are dynamically generated for
+	 * each user. This test ensures the functionality of the generation of the
+	 * charts.
+	 */
 
 	@Test
 	public void testEventCharts() {
