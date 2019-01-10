@@ -45,10 +45,10 @@ public class EventController {
 	
 	@PostMapping(value="/add")
 	@ResponseBody
-	public ResponseEntity<String> addEvent(@RequestBody Events event){
+	public ResponseEntity<String> createEvent(@RequestBody Events event){
 		ResponseEntity<String> resp = null;
 		try {
-			eventService.addEvent(event);
+			eventService.createEvent(event);
 			resp = new ResponseEntity<>("Event Created!", HttpStatus.OK);
 			
 		} catch (Exception e) {
