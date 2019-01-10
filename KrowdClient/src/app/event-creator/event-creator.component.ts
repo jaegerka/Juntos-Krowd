@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Event } from '../home/event.model';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 @Component({
   selector: 'app-event-creator',
@@ -11,7 +13,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 export class EventCreatorComponent implements OnInit {
   @Output() eventCreated = new EventEmitter<{eventName:string}>();
   newEventName:string;
-  constructor() { }
 
   ngOnInit() {
   }
@@ -24,13 +25,37 @@ export class EventCreatorComponent implements OnInit {
     const newEvent = new Event(value.eventName, 
       value.eventLocation, value.eventDescription, 
       value.eventCategory, value.eventDate, 
-      value.eventUserID, value.eventPhotoID, 
+      value.eventUserID, this.imageURL, 
       value.eventCreated);
-    // this.eventCreated.emit({eventName: this.newEventName});
+    this.eventCreated.emit({eventName: this.newEventName});
     console.log(newEvent);
-    
-    
-    
   }
+
+//code for image upload
+  selectedFile: File = null;
+  imageURL: string;
+  picture: string = "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png";
+  constructor(http: HttpClient) { }
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'dhazivqjc', uploadPreset: 'zalhcbr6' })
+    );
+
+    loading: any;
+    upload(){
+      this.loading = true;
+      this.uploader.uploadAll();
+      this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+           let res: any = JSON.parse(response);
+           console.log(res);
+           this.imageURL=res.url;
+           console.log(this.imageURL);
+           this.picture=this.imageURL;
+       }
+       this.uploader.onErrorItem = function(fileItem, response, status, headers) {
+          console.info('onErrorItem', fileItem, response, status, headers);
+        };
+        console.log("picture upload successful")
+    }
 
 }

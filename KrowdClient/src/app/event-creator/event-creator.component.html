@@ -83,8 +83,18 @@
           required/>
       </div>
       
-      <div class="form-group">
-          <app-image-upload name="eventPhotoID" ngModel></app-image-upload>
+      <div class="form-row">
+        <div class="form-group col">
+            <label for="eventImage">Upload an Image (Optional)</label>
+            <br>
+            <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" name="eventPhotoID" ngModel>
+            <br>
+            <br>
+            <button [disabled]="loading" (click)="upload()" >Upload</button>
+        </div>
+        <div class="form-group col">
+          <img src={{picture}}>
+        </div>
       </div>
       
       
