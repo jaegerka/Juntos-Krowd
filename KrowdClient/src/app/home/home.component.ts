@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   onGetUser(){
+    console.log("hello there")
     this.dataService.getAllUsers()
       .subscribe(
         (response)=> console.log(response),
