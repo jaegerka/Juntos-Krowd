@@ -2,44 +2,45 @@ package com.krowd.service;
 
 import java.util.List;
 
-import com.krowd.beans.Users;
+import org.springframework.stereotype.Service;
 
+import com.krowd.beans.Users;
+import com.krowd.dao.UserDAO;
+import com.krowd.dao.UserDAOImpl;
+
+@Service(value="UserService")
 public class UserServiceImpl implements UserService {
+
+	private UserDAO ud = new UserDAOImpl();
 
 	@Override
 	public List<Users> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return ud.getAllUsers();
 	}
 
 	@Override
 	public void addUser(Users user) {
-		// TODO Auto-generated method stub
-
+		ud.addUser(user);
 	}
 
 	@Override
 	public void updateUsers(Users user) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void deleteUsers(Users user) {
-		// TODO Auto-generated method stub
-
+		ud.deleteUsers(user);
 	}
 
 	@Override
 	public Users getUserById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ud.getUserById(id);
 	}
 
 	@Override
 	public void updateFollow(Users user, Users user2) {
-		// TODO Auto-generated method stub
-
+		// TODO
 	}
 
 }
