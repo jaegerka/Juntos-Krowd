@@ -14,28 +14,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.krowd.beans.Users;
-import com.krowd.service.UserService;
+import com.krowd.beans.Events;
+import com.krowd.service.EventService;
 
 @Controller
-@RequestMapping(value="/user")
-public class UserController {
-
+@RequestMapping(value="/event")
+public class EventController {
 	@Autowired
-	private UserService userService;
+	private EventService eventService;
 	
-//	Users u1 = new Users(200,"The","Greatest","ImTheMan","WhoAmI23@gmail.com",100,"ImBetterThanTheBest","BetterThanYou.url");
+//	Events u1 = new Events(200,"The","Greatest","ImTheMan","WhoAmI23@gmail.com",100,"ImBetterThanTheBest","BetterThanYou.url");
 	
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Users>> getAllUsers(){
-		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+	public ResponseEntity<List<Events>> getAllEvents(){
+		return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/{id}")
 	@ResponseBody
-	public ResponseEntity<Users> getUserById(@PathVariable int id){
-		Users u = userService.getUserById(id);
+	public ResponseEntity<Events> getEventById(@PathVariable int id){
+		Events u = eventService.getEventById(id);
 		if (u == null) {
 			return new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT);
 		} else {
@@ -46,18 +45,16 @@ public class UserController {
 	
 	@PostMapping(value="/add")
 	@ResponseBody
-	public ResponseEntity<String> addUser(@RequestBody Users user){
+	public ResponseEntity<String> addEvent(@RequestBody Events event){
 		ResponseEntity<String> resp = null;
 		try {
-			userService.addUser(user);
-			resp = new ResponseEntity<>("User Created!", HttpStatus.OK);
+			eventService.addEvent(event);
+			resp = new ResponseEntity<>("Event Created!", HttpStatus.OK);
 			
 		} catch (Exception e) {
-			resp = new ResponseEntity<>("No User Created, Try Again", HttpStatus.BAD_REQUEST);
+			resp = new ResponseEntity<>("No Event Created, Try Again", HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
-	
-	
 	
 }
