@@ -6,7 +6,7 @@ export class Event {
 	public event_type: string;
 	public event_date: any;
 	public user_id: number;
-	public photo_id: number;
+	public photo_url: number;
 	public created: any;
 
     constructor(event_name: string, event_location: string, event_description: string, event_type: string, event_date: any, user_id: number, photo_id: number, created: any){
@@ -16,7 +16,7 @@ export class Event {
         this.event_type=event_type;
         this.event_date=event_date;
         this.user_id=user_id;
-        this.photo_id=photo_id;
+        this.photo_url=photo_id;
         this.created=created;
     }
 
