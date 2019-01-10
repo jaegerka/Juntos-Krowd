@@ -12,7 +12,7 @@ export class DataServiceService {
 
   getAllUsers (){
 
-   return this.httpClient.get<UserModelService []>("localhost:7001/Juntos-Krowd/users/all")
+   return this.httpClient.get<UserModelService []>("http://localhost:8080/Krowd/user/all")
       // .map((events)=>{
 
 
