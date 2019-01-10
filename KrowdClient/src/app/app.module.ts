@@ -21,6 +21,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UserCommentsComponent } from './profile/user-comments/user-comments.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { UserEventsComponent } from './profile/user-events/user-events.component';
+import { DataServiceService } from './data-service.service';
+
 
 
 const appRoutes: Routes = [
@@ -71,7 +73,7 @@ const appRoutes: Routes = [
     NgbModule
 
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
