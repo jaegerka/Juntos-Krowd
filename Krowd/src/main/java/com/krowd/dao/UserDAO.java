@@ -17,5 +17,5 @@ public interface UserDAO {
 
 	public Users getUserById(int id); 
 
-	public void updateFollow(Users user, Users user2);
+//	public void updateFollow(Users user, Users user2);
 }

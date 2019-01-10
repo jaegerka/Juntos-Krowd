@@ -76,10 +76,10 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
-	@Override
-	public void updateFollow(Users user, Users user2) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void updateFollow(Users user, Users user2) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

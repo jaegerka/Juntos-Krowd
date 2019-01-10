@@ -21,7 +21,7 @@ public class Events {
 	}
 
 	public Events(int event_id, String event_name, String event_location, String event_description, String event_type,
-			LocalDate event_date, int user_id, int photo_id, LocalDate created) {
+			LocalDate event_date, int user_id, String photo_url, LocalDate created) {
 		super();
 		this.event_id = event_id;
 		this.event_name = event_name;
@@ -30,7 +30,7 @@ public class Events {
 		this.event_type = event_type;
 		this.event_date = event_date;
 		this.user_id = user_id;
-		this.photo_id = photo_id;
+		this.photo_url= photo_url;
 		this.created = created;
 	}
 
@@ -49,8 +49,8 @@ public class Events {
 	private LocalDate event_date;
 	@JoinColumn(name = "USER_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private int user_id;
-	@JoinColumn(name = "PHOTO_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-	private int photo_id;
+	@JoinColumn(name = "photo_url", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+	private String photo_url;
 	@JoinColumn(name = "EVENT_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private LocalDate created;
 	
@@ -97,11 +97,12 @@ public class Events {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getPhoto_id() {
-		return photo_id;
+	public String
+	getphoto_url() {
+		return photo_url;
 	}
-	public void setPhoto_id(int photo_id) {
-		this.photo_id = photo_id;
+	public void setphoto_url(String photo_url) {
+		this.photo_url = photo_url;
 	}
 	public LocalDate getCreated() {
 		return created;
@@ -113,7 +114,7 @@ public class Events {
 	public String toString() {
 		return "Events [event_id=" + event_id + ", event_name=" + event_name + ", event_location=" + event_location
 				+ ", event_description=" + event_description + ", event_type=" + event_type + ", event_date="
-				+ event_date + ", user_id=" + user_id + ", photo_id=" + photo_id + ", created=" + created + "]";
+				+ event_date + ", user_id=" + user_id + ", photo_url=" + photo_url + ", created=" + created + "]";
 	}
 	
 	
