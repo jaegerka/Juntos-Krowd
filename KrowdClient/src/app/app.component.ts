@@ -26,7 +26,7 @@ export class AppComponent {
     else{
       this.isNotLandingPage=true;
     }
-    console.log(this.routeURL);
+    // console.log(this.routeURL);
     return this.isNotLandingPage;
   }
  
