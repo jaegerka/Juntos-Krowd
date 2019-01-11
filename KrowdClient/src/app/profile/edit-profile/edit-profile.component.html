@@ -1,3 +1,87 @@
-<p>
-  edit-profile works!
-</p>
+        <!-- Defines the edit profile card with a shadow -->
+          <div class="box-shadow">
+            <div id="editInfo">
+              
+                <form (ngSubmit)="submitChanges(editInfoForm)" #editInfoForm="ngForm">
+
+                  <div class="row">
+                    <!-- first name -->
+                    <div class="form-group col-4" id="nameField">
+                      <label for="firstName">First Name</label>
+                      <input required
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        class="form-control" 
+                        [(ngModel)] = "firstName"/>
+                    </div>
+
+                    <!-- last name -->
+                    <div class="form-group col-4" id="nameField">
+                      <label for="lastName">Last Name</label>
+                      <input required
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        class="form-control" 
+                        [(ngModel)] = "lastName"/>
+                    </div>
+                 
+
+                    <!-- username -->
+                    <div class="form-group col-4 " id="nameField">
+                      <label for="username">Username</label>
+                      <input required
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-control" 
+                        [(ngModel)] = "username"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <!-- email -->
+                    <div class="form-group col-4" id="nameField">
+                      <label for="email">E-mail</label>
+                      <input required
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-control" 
+                        [(ngModel)] = "email"/>
+                    </div>
+
+                    <!-- password -->
+                    <div class="form-group col-4" id="nameField">
+                      <label for="password">Password</label>
+                      <input required
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-control" 
+                        [(ngModel)] = "password"/>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="form-group col">
+                          <label for="eventImage">Upload an Image (Optional)</label>
+                          <br>
+                          <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" name="eventPhotoID" ngModel>
+                          <br>
+                          <br>
+                          <button [disabled]="loading" (click)="upload()">Upload</button>
+                          <div>
+                            <img id="picture" src={{picture}}>
+                          </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group" id="submitButton">
+                      <button type="submit" class="btn btn-success">Submit Changes</button>
+                    </div>
+                  </form>
+              
+            </div>
+          </div>
